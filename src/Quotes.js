@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 function Quotes() {
 	const QUOTEOBJ = {
@@ -10,8 +12,8 @@ function Quotes() {
 			"We have two ears and one mouth so that we can listen twice as much as we speak.",
 	};
 
-	const [quote, setQuote] = useState("");
-	const [author, setAuthor] = useState("");
+	const [quote, setQuote] = useState();
+	const [author, setAuthor] = useState();
 
 	function randomQuote() {
 		let keys = Object.keys(QUOTEOBJ);
@@ -27,13 +29,19 @@ function Quotes() {
 	return (
 		<>
 			<h1>Stoic Quotes</h1>
-			{
-				<div className="quote">
-					<h1>{quote}</h1>
-					<h2>{author}</h2>
-					<button onClick={randomQuote}>New Quote</button>
-				</div>
-			}
+			<Card>
+				<Card.Body className="quote">
+					<h1 className="m-2">
+						<i>"{quote}"</i>
+					</h1>
+					<h3 className="m-2">
+						<i>-{author}</i>
+					</h3>
+				</Card.Body>
+			</Card>
+			<Button className="btn btn-primary m-2" onClick={randomQuote}>
+				New Quote
+			</Button>
 		</>
 	);
 }
